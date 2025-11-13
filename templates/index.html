@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>FileCloudX</h2>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+<input type="file" name="file">
+<button type="submit">Enviar</button>
+</form>
+<ul>
+{% for f in files %}
+<li><a href="/d/{{f}}">{{f}}</a></li>
+{% endfor %}
+</ul>
+</body>
+</html>
