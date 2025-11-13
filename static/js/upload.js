@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         progress.value=Math.round((ev.loaded/ev.total)*100);
       }
     });
-    xhr.onload=()=>{ if(xhr.status==200){ alert('Upload completo'); window.location='/' } else { alert('Erro no upload: '+xhr.status) } }
+    xhr.onload=()=>{ if(xhr.status==200){ location.href='/my_files'; } else { alert('Erro no upload'); } }
     xhr.open('POST','/upload'); xhr.send(fd);
   });
 });

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FileCloudX</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">FileCloudX</div>
+  <div class="menu">
+    {% if user %}
+      <span class="welcome">Olá, {{ user['username'] }}</span>
+      <a class="btn link" href="{{ url_for('my_files') }}">Meus arquivos</a>
+      <a class="btn" href="{{ url_for('logout') }}">Sair</a>
+    {% else %}
+      <a class="btn link" href="{{ url_for('login') }}">Entrar</a>
+      <a class="btn" href="{{ url_for('register') }}">Registrar</a>
+    {% endif %}
+  </div>
+</header>
+<main class="content">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flashwrap">
+        {% for m in messages %}
+          <div class="flash">{{m}}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  {% block body %}{% endblock %}
+</main>
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+</body>
+</html>

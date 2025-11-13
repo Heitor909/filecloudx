@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="authcard">
+  <h2>Meus arquivos</h2>
+  <ul class="files">
+    {% for f in files %}
+      <li><a href="{{ url_for('download', fid=f['id']) }}">{{ f['filename'] }}</a> — {{ (f['size']/1024)|round(2) }} KB</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{{ url_for('index') }}">Voltar</a></p>
+</div>
+{% endblock %}
